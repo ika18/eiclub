@@ -1,0 +1,35 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+/* file upload start */
+.dropArea.hover {
+	-webkit-box-shadow: 0px 0px 4px #666;
+	-moz-box-shadow: 0px 0px 4px #666;
+	box-shadow: 0px 0px 4px #666;
+}
+.dropArea a[data-toggle='modal'] {
+	display: none;
+}
+#uploadModal {
+	width: 620px;
+	margin-left: -310px;
+}
+#uploadModal .modal-body {
+	overflow-y: auto;
+	max-height: 333px;
+}
+#uploadModal h3 + .row {
+	margin: 5px 0 0 0;
+}
+#uploadModal h3 + .row select {
+	margin-bottom: 0;
+}
+.thumbnail:hover {
+	border-color: #0088cc;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.5);
+	-moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.5);
+	box-shadow: 0 1px 4px rgba(0, 105, 214, 0.5);
+}
+/* file upload end */

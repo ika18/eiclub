@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<script src="assets/js/libs/jquery/jquery-1.7.2.min.js"></script>
+
+	<script src="upload.js"></script>
+
+	<style type="text/css" media="screen">
+		#drop {
+			/*position: relative;*/
+			background: #DDD;
+			padding: 10px;
+		}
+		#drop.hover {
+			border: 1px dashed red;
+		}
+		#drop input {
+/*			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;*/
+			/*opacity: 0;
+			-moz-opacity: 0;
+			filter:alpha(opacity=0);*/
+			display: none;
+		}
+		
+		#result:after {
+			content: ' ';
+			display: block;
+			visibility: hidden;
+			clear: both;
+			line-height: 0;
+			height: 0;
+		}
+		#result li {
+			list-style: none;
+			float: left;
+			width: 260px;
+			height: 180px;
+			text-align: center;
+		}
+		#result li img {
+			height: 180px;
+		}
+	</style>
+	<title>Upload demo</title>
+</head>
+<body>
+	<div id="drop">
+		<form action="upload.php" method="POST" enctype="multipart/form-data">
+			<h1>Drop files here</h1>
+			<p>To add them as attachments</p>
+			<input type="file" multiple="true" id="filesupload" name="filesuploads[]" />
+			<br />
+			<input type="submit" vaule="upload">
+		</form>
+		
+	</div>
+
+	<ul id="result">
+		<li><img src="http://tp2.sinaimg.cn/1740701057/180/1285595072/1" alt=""></li>
+	</ul>
+</body>
+</html>

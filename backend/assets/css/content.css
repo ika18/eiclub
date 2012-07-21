@@ -1,0 +1,247 @@
+/************************************* main start **************************************/
+#main {
+}
+#main .fullView {
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%;
+}
+#imageMask {
+	background: url(../images/pattern.png) left bottom repeat-x transparent;
+	height: 100%;
+	width: 100%;
+	opacity: 0.3;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+/************************************* main end **************************************/
+
+/************************************* logo start **************************************/
+#logo {
+	margin: 20px;
+	position:relative;
+}
+#logo h1,
+#logo h2 {
+	color: #FFF;
+	display: inline-block;
+	text-shadow: 1px 1px 1px black;
+}
+#logo h1 {
+	font-size: 2.667em;
+	position:relative;
+}
+#logo h2 {
+	letter-spacing: 0.3em;
+	font-size: 1.167em;
+	margin-left: 15px;
+}
+#logo h2 strong {
+	color: #C595AD;
+}
+/************************************* logo end **************************************/
+
+/************************************* page loading start **************************************/
+#pageLoading {
+	background: url(../images/loader.gif) center 5px no-repeat #000;
+	width: auto; height: auto; 
+	padding: 41px 5px 5px 5px;
+	position: fixed;
+	opacity: 0.6;
+	right: 0;
+	top: 20px;
+	
+	-webkit-border-radius: 8px 0 0 8px;
+	-moz-border-radius: 8px 0 0 8px;
+	-ms-border-radius: 8px 0 0 8px;
+	-o-border-radius: 8px 0 0 8px;
+	border-radius: 8px 0 0 8px;
+
+	-webkit-box-shadow: 0 0 2px #000;
+	-moz-box-shadow: 0 0 2px #000;
+	box-shadow: 0 0 2px #000;
+	color: #FFF;
+	font-size: 1.167em;
+
+	display: none;
+}
+/************************************* page loading end **************************************/
+
+/************************************* footer start **************************************/
+footer {
+	position: fixed;
+	bottom: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,.4);
+}
+footer p {
+	color: #FFF;
+}
+#copyright {
+  float: right;
+  margin-right: 20px;
+}
+#thumbTrigger {
+  float: left;
+  margin-left: 20px;
+}
+#thumbTrigger a {
+	color: #FFF;
+	display: inline-block;
+}
+#thumbTrigger a:last-of-type,
+#thumbTrigger.expand a:first-of-type {
+	display: none;
+}
+#thumbTrigger.expand a:last-of-type {
+	display: block;
+}
+/************************************* footer end **************************************/
+
+/************************************* thumbnail preview area start **************************************/
+#previewThumb {
+	height: 155px;
+	overflow: hidden;
+	width: 100%;
+	position: fixed;
+	bottom: 40px;
+}
+#previewThumb ul {
+	display: block;
+	height: 155px;
+	width: 6000px;
+}
+#previewThumb li {
+	display: block;
+	float: left;
+	padding: 0 5px;
+}
+#previewThumb a {
+	display: block;
+	box-shadow: 1px 1px 1px #333;
+	height: 120px;
+	margin-bottom: 4px;
+}
+#previewThumb img {
+	height: 120px;
+}
+img.fadeEf {
+	opacity: .6;
+}
+img.fadeEf:hover {
+	-moz-transition: opacity 0.5s ease-in-out;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-o-transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+	opacity: 1;
+}
+#previewThumb .reflection {
+	position: relative;
+}
+#previewThumb .reflection img {
+	-moz-transform: scaleY(-1);
+	-webkit-transform: scaleY(-1);
+	-o-transform: scaleY(-1);
+	-ms-transform: scaleY(-1);
+	transform: scaleY(-1);
+}
+#previewThumb .reflection .overlay {
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 30%, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));	
+	background-image: -moz-linear-gradient(center bottom , #000000 70%, transparent 100%);	
+	background-image: -ms-linear-gradient(center bottom , #000000 70%, transparent 100%);	
+	background-image: -o-linear-gradient(center bottom , #000000 70%, transparent 100%);	
+	background-image: linear-gradient(center bottom , #000000 70%, transparent 100%);	
+	height: 120px;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+/************************************* thumbnail preview area end **************************************/
+
+/************************************* main navigation start **************************************/
+#mainNav {
+	position: absolute;
+	top: 120px;
+	z-index: 1;
+}
+#mainNav > ul > li {
+	position: relative;
+	margin: 10px 0;
+}
+#mainNav > ul > li > a {
+	color: #FFF;
+	display: inline-block;
+	font-weight: lighter;
+
+  background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#000));
+  background: -moz-linear-gradient(top, #222, #000);	
+
+	-moz-box-shadow: 1px 1px 1px #333;
+	-webkit-box-shadow: 1px 1px 1px #333;
+	-ms-box-shadow: 1px 1px 1px #333;
+	-o-box-shadow: 1px 1px 1px #333;
+	box-shadow: 1px 1px 1px #333;
+
+	-moz-border-radius: 0px 2px 2px 0;
+	-webkit-border-radius: 0px 2px 2px 0;
+	-ms-border-radius: 0px 2px 2px 0;
+	-o-border-radius: 0px 2px 2px 0;
+	border-radius: 0px 2px 2px 0;
+
+	font-size: 1.167em;
+	padding: 15px 10px 15px 25px;
+}
+#mainNav > ul > li a:hover {
+  background: #111;
+}
+#mainNav > ul > li a span {
+	margin-left: 10px;
+}
+/************************************* main navigation end **************************************/
+
+
+/************************************* main navigation album cover start **************************************/
+#mainNav div.albumCover {
+  display: none;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+#mainNav div.albumCover ul {
+  margin: 10px 0;
+  width: 6000px;
+}
+#mainNav div.albumCover li {
+  float: left;
+  margin: 0 5px;
+}
+#mainNav div.albumCover ul a {
+  box-shadow: 1px 1px 1px #333;
+  display: block;
+  height: 120px;
+}
+
+#main #aboutus {
+  display: none;
+  width: 470px;
+  height: 370px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -200px 0 0 -250px;
+  padding: 15px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  background-color: rgba(0,0,0,.8);
+  -webkit-box-shadow: 0px 0px 2px #111;
+  -moz-box-shadow: 0px 0px 2px #111;
+  -ms-box-shadow: 0px 0px 2px #111;
+  -o-box-shadow: 0px 0px 2px #111;
+  color: white;
+}
+
+/************************************* main navigation album cover end **************************************/
