@@ -80,7 +80,7 @@ var MenuView = Backbone.View.extend({
             // this.model.url = Urls.deleteMenu;
             // this.model.destroy();
         // }
-        console.log(this.model);
+        console.log(this.model.get('menu_id'));
         return false;
     }
 });
@@ -91,14 +91,14 @@ var AppView = Backbone.View.extend({
 
     initialize: function () {
         Menus.fetch({
-            // success: function (collection, response) {
-            // }
+            error: function () {
+                errorMsg();
+            }
         });
         _.bindAll(this, 'addOne', 'addAll');
         Menus.bind('add', this.addOne, this);
         Menus.bind('reset', this.addAll, this);
     },
-
 
     addOne: function (menu) {
         var view = new MenuView({model: menu});
@@ -142,8 +142,13 @@ var AddMenuView = Backbone.View.extend({
                         that.$helper.text('Menu has been added!');
 
                         var time = setTimeout(function () {
-                            that.$input.parents('.control-group').attr('class', 'control-group');
+                            that.$input.parents('.control-group').attr('class', 'control-group')
+                            .end().val('');
                             that.$helper.text('');
+
+                            // add new model to collection, 
+                            // then it will trigger collection add event
+                            Menus.add(response);
                             clearTimeout(time);
                         }, 1000);
                     } else {
