@@ -19,4 +19,4 @@ $(function () {
 		uploadBtn: '#uploadBtn',
 		url: url
 	});
-})
+});

@@ -1,51 +1,57 @@
 <div class="hero-unit dropArea">
-  <h2>Drag photos here!</h2>
-  <a href="#uploadModal" class="btn" data-toggle="modal">Upload modal</a>
+    <h2>Drag photos here!</h2>
+    <a href="#uploadModal" class="btn" data-toggle="modal">Upload modal</a>
 </div>
 
 <div class="row-fluid">
-  <p>
-    <select name="" id="">
-      <option value="">All</option>
-      <option value="1">Album 1</option>
-      <option value="2">Album 2</option>
-    </select>
-  </p>
+    <p>
+        <select id="menuList" class="span2">
+            <option value="">All</option>
+            <option value="1">Album 1</option>
+            <option value="2">Album 2</option>
+        </select>
 
-  <ul class="thumbnails">
-    <li class="span2">
-      <div class="thumbnail">
-        <img src="http://placehold.it/260x180" alt="">
-        <div class="caption">
-          <label for="prev-thumb0">Photo name</label>
-          <input type="text" placeholder="Chrysanthemum" name="prev-thumb0" id="prev-thumb0" class="input-small">
-          <p>
-            <a href="#" class="btn">Delete</a>
-          </p>
-          <p>
-            <a href="#" class="btn btn-primary">Rename</a>
-          </p>
-        </div>
-      </div>
-    </li>
+        <select class="span2" id="albumList">
+            <option value="">All</option>
+            <option value="1">Album 1</option>
+            <option value="2">Album 2</option>
+        </select>
+    </p>
 
-    <li class="span2">
-      <div class="thumbnail">
-        <img src="http://placehold.it/260x180" alt="">
-        <div class="caption">
-          <label for="prev-thumb0">Photo name</label>
-          <input type="text" placeholder="Chrysanthemum" name="prev-thumb0" id="prev-thumb0" class="input-small">
-          <p>
-            <a href="#" class="btn">Delete</a>
-          </p>
-          <p>
-            <a href="#" class="btn btn-primary">Rename</a>
-          </p>
-        </div>
-      </div>
-    </li>
+    <ul class="thumbnails">
+        <li class="span2">
+            <div class="thumbnail">
+                <img src="http://placehold.it/260x180" alt="">
+                <div class="caption">
+                    <label for="prev-thumb0">Photo name</label>
+                    <input type="text" placeholder="Chrysanthemum" name="prev-thumb0" id="prev-thumb0" class="input-small">
+                    <p>
+                        <a href="#" class="btn">Delete</a>
+                    </p>
+                    <p>
+                        <a href="#" class="btn btn-primary">Rename</a>
+                    </p>
+                </div>
+            </div>
+        </li>
 
-  </ul>
+        <li class="span2">
+            <div class="thumbnail">
+                <img src="http://placehold.it/260x180" alt="">
+                <div class="caption">
+                    <label for="prev-thumb0">Photo name</label>
+                    <input type="text" placeholder="Chrysanthemum" name="prev-thumb0" id="prev-thumb0" class="input-small">
+                    <p>
+                        <a href="#" class="btn">Delete</a>
+                    </p>
+                    <p>
+                        <a href="#" class="btn btn-primary">Rename</a>
+                    </p>
+                </div>
+            </div>
+        </li>
+
+    </ul>
 </div>
 
 <!-- file upload modal start -->

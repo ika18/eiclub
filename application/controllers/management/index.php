@@ -26,15 +26,17 @@ class Index extends CI_Controller {
 
         // Show the masterpage to the world!
         $this->masterpage->show();
+    }
 
-        $query = $this->db->get('menu');
-        $data = $query->result();
+    public function managealbum() {
+        $this->masterpage->setMasterPage('management/masterpage');
 
-        // $this->load->model('Menumodel', 'menu');
-        // $data = $this->menu->get_all();
-        // echo '<pre>';
-        // var_dump($data);
-        // echo '</pre';
+        // content_index is the view file to use.
+        // content is the tag in the masterpage file we want to replace.
+        $this->masterpage->addContentPage ('management/managealbum', 'content');
+
+        // Show the masterpage to the world!
+        $this->masterpage->show();
     }
 
     public function managephoto() {

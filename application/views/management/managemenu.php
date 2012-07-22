@@ -1,17 +1,12 @@
 <div class="row-fluid">
-	<h2>Manage menu</h2>
+	<h2>Manage Menu</h2>
 
-	<table id="menu-table" class="table editable">
-		<colgroup>
-			<col width="10%">
-			<col width="60%">
-			<col width="30%">
-		</colgroup>
+	<table id="menu-table" class="table table-striped editable">
 		<thead>
 			<tr>
-				<th>#</th>
-				<th>Name</th>
-				<th>Operate</th>
+				<th width="10%">#</th>
+				<th width="60%">Name</th>
+				<th width="30%">Operate</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,7 +16,7 @@
 </div>
 
 <div class="row-fluid">
-	<h2>Add new menu</h2>
+	<h2>Add New Menu</h2>
 	<form action="#" class="form-horizontal" id="add-menu">
 		<fieldset>
 			<div class="control-group">
