@@ -26,4 +26,9 @@ class Menumodel extends CI_Model {
 
         return $this->db->insert_id();
     }
+
+    function delete($menu_id) 
+    {
+        $this->db->delete('menu', array('menu_id' => $menu_id));
+    }
 }

@@ -4,29 +4,31 @@ var errorMsg = function () {
     alert('An error occured, please try later! Or connect with Ika Wu please!');
 };
 
-var Urls = {
-    getMenus: '/api/menuapi/menus/format/json',
-    // addMenu: function (str) {
-    //     return window.location.origin + '/api/menuapi/menu/' + str + 'format/json'
-    // },
-    addMenu: '/api/menuapi/menu/format/json',
-    // deleteMenu: function (id) {
-    //     return window.location.origin + '/api/menuapi/menu/id/' + id + '/format/json';
-    // }
-    deleteMenu: '/api/menuapi/menu/'
-}
+var url = '/api/menuapi/menu/format/json/id';
 
 var Menu = Backbone.Model.extend({
     defaults: {
         'menu_id': '',
         'menu_name': '',
         'menu_seq': ''
+    },
+    clear: function (callback) {
+        this.destroy({
+            success: function (model, response) {
+                if (response.status === 'ok' && callback) {
+                    callback();
+                }
+            },
+            error: function () {
+                errorMsg();
+            }
+        });
     }
 });
 
 var MenuCollection = Backbone.Collection.extend({
     model: Menu,
-    url: Urls.getMenus
+    url: url
 });
 
 var Menus = new MenuCollection;
@@ -46,7 +48,7 @@ var MenuView = Backbone.View.extend({
     initialize: function () {
         _.bindAll(this, 'render', 'close', 'remove');
         this.model.bind('change', this.render, this);
-        this.model.bind('destroy', this.remove, this);
+        // this.model.bind('destroy', this.remove, this);
     },
 
     render: function() {
@@ -73,15 +75,15 @@ var MenuView = Backbone.View.extend({
             console.log(menu_id);
         }   
     },
-    remove: function () {
-        // var confirm = window.confirm("Are you sure to delete this menu?");
-        // if (confirm) {
-            // this.model.url = Urls.deleteMenu(this.model.get('menu_id'));
-            // this.model.url = Urls.deleteMenu;
-            // this.model.destroy();
-        // }
-        console.log(this.model.get('menu_id'));
-        return false;
+    remove: function (e) {
+        e.preventDefault();
+        var that = this;
+        var confirm = window.confirm("Are you sure to delete this menu?");
+        if (confirm) {
+            this.model.clear(function () {
+                that.$el.remove();
+            });
+        }
     }
 });
 
@@ -102,6 +104,7 @@ var AppView = Backbone.View.extend({
 
     addOne: function (menu) {
         var view = new MenuView({model: menu});
+        menu.id = menu.get('menu_id');
         this.$('tbody').append(view.render().el);
     },
     addAll: function () {
@@ -127,13 +130,13 @@ var AddMenuView = Backbone.View.extend({
         if (menu_name) {
             var menu = new Menu();
 
-            menu.url = Urls.addMenu;
+            menu.url = url;
             menu.save({
                 'menu_name': menu_name,
                 'menu_seq': Menus.length + 1
             }, {
                 success: function (model, response) {
-                    if (response.status !== 'faile') {
+                    if (response.status !== 'fail') {
                         menu.set({
                             'menu_id': response.menu_id
                         });

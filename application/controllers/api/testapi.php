@@ -24,6 +24,9 @@ Class Testapi extends REST_Controller {
 
     function user_delete()
     {
+        // transfer data using post method
+        $data = array('returned: '. $this->delete('id'));
+        // transfer data using get method
         $data = array('returned: '. $this->get('id'));  
         $this->response($data);  
     }
