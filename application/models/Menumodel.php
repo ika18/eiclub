@@ -31,4 +31,13 @@ class Menumodel extends CI_Model {
     {
         $this->db->delete('menu', array('menu_id' => $menu_id));
     }
+
+    function update($model)
+    {
+        $this->db->where('menu_id', $model['menu_id']);
+        $this->db->update('menu', array(
+            'menu_name' => $model['menu_name'],
+            'menu_seq' => $model['menu_seq'],
+        ));
+    }
 }

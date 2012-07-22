@@ -16,24 +16,6 @@ Class Menuapi extends REST_Controller {
         
     }
 
-    // function menu_post()
-    // {
-    //     $data = array('post: '. $this->get('id'));  
-    //     $this->response($data);  
-    // }
-
-    // function menu_put()
-    // {
-    //     $data = array('put: '. $this->get('id'));  
-    //     $this->response($data);  
-    // }
-
-    // function menu_delete()
-    // {
-    //     $data = array('delete: '. $this->get('id'));  
-    //     $this->response($data);  
-    // }
-
     function menu_post() 
     {
         try {
@@ -48,7 +30,20 @@ Class Menuapi extends REST_Controller {
         } catch (Exception $e) {
             $this->response(array('status' => 'fail'));
         }
-        
+    }
+
+    function menu_put()
+    {
+        try {
+            $this->load->model('Menumodel', 'menu');
+            $model = json_decode($this->put('model'), true);
+            $this->menu->update($model);
+            $this->response(array(
+                'status' => 'ok'
+            ));
+        } catch (Exception $e) {
+            $this->response(array('status' => 'fail'));
+        }
     }
 
     function menu_delete()

@@ -59,27 +59,43 @@ var MenuView = Backbone.View.extend({
         this.$control = this.$('.control-group');
         this.$helper = this.$('.help-inline');
 
+        this.$view = this.$el.find('td:eq(1) .view');
+
         return this;
     },
 
     edit: function (e) {
-        var $tr = $(e.target).parents('tr');
-        val = $tr.addClass('editMode').find("td:eq(1) .view").text();
-        $tr.find("td:eq(1) input").attr('placeholder', val).focus();
-        return false;
+        e.preventDefault();
+        this.$el.addClass('editMode');
+        var val = this.$view.text();
+        this.$input.attr('placeholder', val).focus();
     },
     close: function (e) {
+        e.preventDefault();
         $(e.target).parents('tr').removeClass('editMode').find("td:eq(1) input").val('');
         return false;
     },
     save: function (e) {
         e.preventDefault();
-        var $root = $(e.target).parents('tr'),
-        menu_name = $.trim($root.find('input[name="menu_name"]').val()),
-        menu_id = $root.find('input[name="menu_id"]').val();
+        var that = this;
+        var menu_name = $.trim(this.$input.val());
+        var menu_id = this.$el.find('input[name="menu_id"]').val();
 
         if (menu_name.length) {
-            
+            this.model.save({
+                'menu_name': menu_name,
+                'menu_id': menu_id
+            }, {
+                success: function (model, response) {
+                    if (response.status === 'ok') {
+                        that.$el.removeClass('editMode');
+                        that.$view.text(model.get('menu_name'));
+                    }
+                },
+                error: function () {
+                    errorMsg();
+                }
+            });
         } else {
             this.$control.attr('class', 'control-group error');
             this.$helper.text('Menu Name can\'t be empty!');
