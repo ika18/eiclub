@@ -40,7 +40,8 @@ var MenuView = Backbone.View.extend({
         'click .editBtn': 'edit',
         'click .closeBtn': 'close',
         'click .updateBten': 'save',
-        'click .removeBtn': 'remove'
+        'click .removeBtn': 'remove',
+        'focus input:text': 'focusInput'
     },
 
     template: $('#menu-template').html(),
@@ -53,6 +54,11 @@ var MenuView = Backbone.View.extend({
 
     render: function() {
         this.$el.html(Mustache.render(this.template, this.model.toJSON()));
+
+        this.$input = this.$('input:text');
+        this.$control = this.$('.control-group');
+        this.$helper = this.$('.help-inline');
+
         return this;
     },
 
@@ -67,13 +73,17 @@ var MenuView = Backbone.View.extend({
         return false;
     },
     save: function (e) {
+        e.preventDefault();
         var $root = $(e.target).parents('tr'),
-        menu_name = $root.find('input[name="menu_name"]').val(),
+        menu_name = $.trim($root.find('input[name="menu_name"]').val()),
         menu_id = $root.find('input[name="menu_id"]').val();
-        if (menu_name) {
-            console.log(menu_name);
-            console.log(menu_id);
-        }   
+
+        if (menu_name.length) {
+            
+        } else {
+            this.$control.attr('class', 'control-group error');
+            this.$helper.text('Menu Name can\'t be empty!');
+        }
     },
     remove: function (e) {
         e.preventDefault();
@@ -84,6 +94,10 @@ var MenuView = Backbone.View.extend({
                 that.$el.remove();
             });
         }
+    },
+    focusInput: function (e) {
+        this.$input.parents('.control-group').removeClass('error');
+        this.$helper.text('');
     }
 });
 
@@ -116,11 +130,13 @@ var AddMenuView = Backbone.View.extend({
     el: $('#add-menu'),
 
     events: {
-        'submit': 'formSubmit'
+        'submit': 'formSubmit',
+        'focus #menu_name': 'focusInput'
     },
 
     initialize: function () {
         this.$input = this.$('#menu_name');
+        this.$control = this.$('.control-group');
         this.$helper = this.$input.next();
     },
 
@@ -164,10 +180,15 @@ var AddMenuView = Backbone.View.extend({
                 }
             });
         } else {
-            this.$input.parents('.control-group').attr('class', 'control-group error');
+            this.$control.attr('class', 'control-group error');
             this.$helper.text('Menu Name can\'t be empty!');
         }
         return false;
+    },
+
+    focusInput: function (e) {
+        this.$input.parents('.control-group').removeClass('error');
+        this.$helper.text('');
     }
 });
 

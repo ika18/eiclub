@@ -52,4 +52,7 @@ body {
 .editable input {
 	margin-bottom: 0;
 }
+#menu-table .control-group {
+	margin: 0;
+}
 /*manage menu end*/

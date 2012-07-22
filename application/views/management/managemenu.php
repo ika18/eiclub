@@ -4,8 +4,8 @@
 	<table id="menu-table" class="table editable">
 		<colgroup>
 			<col width="10%">
-			<col width="50%">
-			<col width="40%">
+			<col width="60%">
+			<col width="30%">
 		</colgroup>
 		<thead>
 			<tr>
@@ -43,9 +43,14 @@
 	<td>{{menu_seq}}</td>
 	<td>
 		<div class="view">{{menu_name}}</div>
-		<div class="edit">
-			<input type="text" name="menu_name" class="" />
-			<input type="hidden" name="menu_id" value="{{menu_id}}">
+		<div class="edit form-inline">
+			<div class="control-group">
+				<div class="controls">
+					<input type="text" name="menu_name" />
+					<input type="hidden" name="menu_id" value="{{menu_id}}">
+					<span class="help-inline"></span>
+				</div>
+			</div>
 		</div>
 	</td>
 	<td>
