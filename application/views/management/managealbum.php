@@ -40,7 +40,7 @@
 
 <div class="row-fluid">
 	<h2>Add New Album</h2>
-	<form action="#" class="form-horizontal" id="add-menu">
+	<form action="#" class="form-horizontal" id="add-album">
 		<fieldset>
 			<div class="control-group">
 				<label for="menu_name" class="control-label">Select A Menu</label>

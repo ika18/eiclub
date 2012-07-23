@@ -18,6 +18,20 @@ var MenuCollection = Backbone.Collection.extend({
     url: '/api/menuapi/menu/format/json/id'
 });
 
+var Album = Backbone.Model.extend({
+    defaults: {
+        'album_id': '',
+        'album_name': '',
+        'menu_id': ''
+    }
+});
+
+var AlbumCollection = Backbone.Collection.extend({
+    model: Album,
+    url: '/api/albumapi/menu/format/json/id'
+});
+
+
 var Menus = new MenuCollection;
 
 var MenuTabView = Backbone.View.extend({
@@ -57,10 +71,54 @@ var MenuSelectView = Backbone.View.extend({
 	},
 
 	render: function () {
+        var data = this.model.toJSON();
 		var option = Mustache.render(this.template, this.model.toJSON());
 		this.$el.text(option).attr('value', this.model.get('menu_id'));
 		return this;
 	}
+});
+
+var AddAlbumView = Backbone.View.extend({
+    el: $('#add-album'),
+    events: {
+        'submit': 'formSubmit',
+        'focus #album_name': 'focusInput',
+        'change #menu_name': 'changeSelect'
+    },
+
+    initialize: function () {
+        this.$select = $('#menu_name');
+        this.$input = $('#album_name');
+    },
+
+    formSubmit: function (e) {
+        e.preventDefault();
+
+        var menu_id = this.$select.val();
+        var album_name = $.trim(this.$input.val());
+        var that = this;
+        var valid = true;
+        if (menu_id === '') {
+            showErrorHelper(this.$select);
+            valid = false;
+        }
+        if (!album_name.length) {
+            showErrorHelper(this.$input);
+            valid = false;
+        }
+
+        if (!valid) {
+            return false;
+        }
+    },
+
+    focusInput: function (e) {
+        hideErrorHelper($(e.target));
+    },
+
+    changeSelect: function (e) {
+        hideErrorHelper($(e.target));
+    }
 });
 
 var AppView = Backbone.View.extend({
@@ -94,6 +152,17 @@ var AppView = Backbone.View.extend({
     }
 });
 
+var showErrorHelper = function ($el, msg) {
+    $el.parents('.control-group').attr('class', 'control-group error');
+    $el.next().text('This field can\'t be empty!');
+};
+
+var hideErrorHelper = function ($el) {
+    $el.parents('.control-group').removeClass('error');
+    $el.next().text('');
+};
+
 $(function () {
     var appView = new AppView;
+    var addAlbumView = new AddAlbumView;
 });

@@ -156,7 +156,8 @@ var AddMenuView = Backbone.View.extend({
         this.$helper = this.$input.next();
     },
 
-    formSubmit: function () {
+    formSubmit: function (e) {
+        e.preventDefault();
         var menu_name = this.$input.val(),
         that = this;
         if (menu_name) {
@@ -199,11 +200,10 @@ var AddMenuView = Backbone.View.extend({
             this.$control.attr('class', 'control-group error');
             this.$helper.text('Menu Name can\'t be empty!');
         }
-        return false;
     },
 
     focusInput: function (e) {
-        this.$input.parents('.control-group').removeClass('error');
+        this.$control.removeClass('error');
         this.$helper.text('');
     }
 });
