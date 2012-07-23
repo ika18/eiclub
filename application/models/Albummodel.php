@@ -12,7 +12,14 @@ class Albummodel extends CI_Model {
     {
         $query = $this->db->get('album');
         $data = $query->result();
-        // $data = $query->result();
+
+        return $data;
+    }
+
+    function get_where($id)
+    {
+        $query = $this->db->get_where('album', array('menu_id' => $id));
+        $data = $query->result();
 
         return $data;
     }

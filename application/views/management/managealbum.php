@@ -11,22 +11,17 @@
 			</li> -->
 		</ul>
 
-		<div class="tab-content">
-			<div class="tab-pane active fade in" id="tab1">
+		<div class="tab-content" id="album-content">
+			<div class="tab-pane active" id="tab1">
 				<table class="album-table table table-striped editable">
 					<thead>
 						<tr>
 							<th width="10%">#</th>
-							<th width="60%">Name</th>
+							<th width="60%">Album Name</th>
 							<th width="30%">Operate</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>asf</td>
-							<td>asdfd</td>
-							<td>asfddsaf</td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -75,24 +70,18 @@
 </script>
 
 <script type="text/template" id="album-template">
-	<div class="tab-pane active fade in" id="tab1">
-		<table class="album-table table table-striped editable">
-			<thead>
-				<tr>
-					<th width="10%">#</th>
-					<th width="60%">Name</th>
-					<th width="30%">Operate</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	<td></td>
+	<td>{{album_name}}</td>
+	<td>
+		<div class="view">
+			<a href="#" class="btn btn-primary editBtn">Edit</a>
+			<a href="#" class="btn btn-danger removeBtn">Remove</a>
+		</div>
+		<div class="edit">
+			<a href="#" class="btn btn-primary updateBten">Update</a>
+			<a href="#" class="btn closeBtn">Abandon</a>
+		</div>
+	</td>
 </script>
 
 <script src="<?php echo site_url('assets/js/bootstrap/bootstrap-tab.js'); ?>"></script>
