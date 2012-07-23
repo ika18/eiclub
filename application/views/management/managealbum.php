@@ -1,33 +1,25 @@
 <div class="row-fluid">
 	<h2>Manage Album</h2>
 
-	<div class="tabbale">
+	<div class="tabbable">
 		<ul class="nav nav-tabs" id="album-tab">
-			<!-- <li class="active">
-				<a href="#tab1" data-toggle="tab">Section 1</a>
+			<li class="active">
+				<a href="#" data-toggle="tab">All</a>
 			</li>
-			<li>
-				<a href="#tab2" data-toggle="tab">Section 2</a>
-			</li> -->
 		</ul>
 
-		<div class="tab-content" id="album-content">
-			<div class="tab-pane active" id="tab1">
-				<table class="album-table table table-striped editable">
-					<thead>
-						<tr>
-							<th width="10%">#</th>
-							<th width="60%">Album Name</th>
-							<th width="30%">Operate</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
-			<div class="tab-pane fade" id="tab2">
-				<p>I'm in section 2.</p>
-			</div>
+		<div class="" id="album-content">
+			<table class="album-table table table-striped editable">
+				<thead>
+					<tr>
+						<th width="10%">#</th>
+						<th width="60%">Album Name</th>
+						<th width="30%">Operate</th>
+					</tr>
+				</thead>
+				<tbody class="tab-content">
+				</tbody>
+			</table>
 		</div>
 	</div>
 

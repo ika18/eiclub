@@ -41,7 +41,7 @@ var MenuTabView = Backbone.View.extend({
 	href: '#tab',
 
     events: {
-    	'click #album-tab a': 'tabable'
+    	'click #album-tab a': 'tabbable'
     },
 
     template: $('#tab-template').html(),
@@ -56,23 +56,34 @@ var MenuTabView = Backbone.View.extend({
         this.$el.html(li);
         return this;
     },
-    tabable: function (e) {
+    tabbable: function (e) {
     	e.preventDefault();
-    	$(e.target).tab('show');
+        var $me = $(e.target);
+        var tabName = $me.attr('href').substring(1);
+        var $parent = $me.parents('.tabbable');
+        if (tabName.length) {
+            $parent.find('.tab-content').find('.tab-pane').removeClass('active').end()
+            .find('.' + tabName).addClass('active');
+        } else {
+            $parent.find('.tab-content').find('.tab-pane').addClass('active');
+        }
+        
     }
 });
 
 var AlbumContentView = Backbone.View.extend({
     tagName: 'tr',
     elId: 'tab',
+    attributes: {
+        'class': 'tab-pane active'
+    },
     template: $('#album-template').html(),
     initialize: function () {
 
     },
-
     render: function () {
         var tr = $(Mustache.render(this.template, this.model.toJSON()));
-        this.$el.html(tr);
+        this.$el.html(tr).addClass(this.elId + this.model.get('menu_id'));
         return this;
     }
 });
@@ -148,8 +159,8 @@ var AddAlbumView = Backbone.View.extend({
                 }
             },
             error: function (model, response) {
-                // errorMsg();
-                console.log('error');
+                errorMsg();
+                // console.log('error');
             }
         });
     },
@@ -213,6 +224,8 @@ var AppView = Backbone.View.extend({
     },
     addAlbums: function () {
         Albums.each(this.addAlbum);
+
+        this.$content.children('tbody tr:eq(0)').addClass('active');
     }
 });
 
