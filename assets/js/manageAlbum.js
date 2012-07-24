@@ -37,12 +37,7 @@ var Albums = new AlbumCollection;
 
 var MenuTabView = Backbone.View.extend({
 	tagName: 'li',
-
 	href: '#tab',
-
-    events: {
-    	'click #album-tab a': 'tabbable'
-    },
 
     template: $('#tab-template').html(),
 
@@ -55,19 +50,6 @@ var MenuTabView = Backbone.View.extend({
     	var li = $(Mustache.render(this.template, this.model.toJSON())).attr('href', this.href + this.model.get('menu_id'));
         this.$el.html(li);
         return this;
-    },
-    tabbable: function (e) {
-    	e.preventDefault();
-        var $me = $(e.target);
-        var tabName = $me.attr('href').substring(1);
-        var $parent = $me.parents('.tabbable');
-        if (tabName.length) {
-            $parent.find('.tab-content').find('.tab-pane').removeClass('active').end()
-            .find('.' + tabName).addClass('active');
-        } else {
-            $parent.find('.tab-content').find('.tab-pane').addClass('active');
-        }
-        
     }
 });
 
@@ -75,7 +57,7 @@ var AlbumContentView = Backbone.View.extend({
     tagName: 'tr',
     elId: 'tab',
     attributes: {
-        'class': 'tab-pane active'
+        'class': 'tab-pane'
     },
     template: $('#album-template').html(),
     initialize: function () {
@@ -84,6 +66,14 @@ var AlbumContentView = Backbone.View.extend({
     render: function () {
         var tr = $(Mustache.render(this.template, this.model.toJSON()));
         this.$el.html(tr).addClass(this.elId + this.model.get('menu_id'));
+
+        var tab = $('.tabbable .nav-tabs li.active a').attr('href').substring(4);
+        if (!tab) {
+            this.$el.addClass('active');
+        }
+        else if (this.model.get('menu_id') == tab) {
+            this.$el.addClass('active');
+        }
         return this;
     }
 });
@@ -115,10 +105,7 @@ var AddAlbumView = Backbone.View.extend({
     initialize: function () {
         this.$select = $('#menu_name');
         this.$input = $('#album_name');
-
-        this.$tabbable = $('.tabbable');
-        this.$tab = this.$tabbable.find('.nav-tabs li');
-        this.$tr = this.$tabbable.find('#album-content tbody tr');
+        this.$tbody = $('#album-content tbody');
     },
 
     formSubmit: function (e) {
@@ -157,8 +144,13 @@ var AddAlbumView = Backbone.View.extend({
                         .end().val('');
                         that.$input.next().text('');
 
-                        var tab = that.$tab.find('.active a').attr('href').substing(1);
-                        console.log(that.$tr.find(''));
+                        // var tab = $('.tabbable .nav-tabs li.active a').attr('href').substring(4);
+                        
+                        // // if (model.get('menu_id') == tab) {
+
+                        // // }
+
+                        Albums.add(response);
 
                         clearTimeout(time);
                     }, 1000);
@@ -184,6 +176,10 @@ var AddAlbumView = Backbone.View.extend({
 var AppView = Backbone.View.extend({
     el: $('body'),
 
+    events: {
+        'click #album-tab a': 'tabbable'
+    },
+
     initialize: function () {
         Menus.fetch({
             error: function () {
@@ -193,7 +189,7 @@ var AppView = Backbone.View.extend({
 
         Albums.fetch({
             success: function (collection, resposne) {
-                console.log(resposne);
+                // console.log(resposne);
             },
             error: function () {
                 errorMsg();
@@ -220,8 +216,6 @@ var AppView = Backbone.View.extend({
     },
     addMenus: function () {
         Menus.each(this.addMenu);
-
-		this.$tab.children(':eq(0)').addClass('active');
     },
 
     addAlbum: function (album) {
@@ -230,8 +224,19 @@ var AppView = Backbone.View.extend({
     },
     addAlbums: function () {
         Albums.each(this.addAlbum);
-
-        this.$content.children('tbody tr:eq(0)').addClass('active');
+    },
+    tabbable: function (e) {
+        e.preventDefault();
+        var $me = $(e.target);
+        var tabName = $me.attr('href').substring(1);
+        var $parent = $me.parents('.tabbable');
+        if (tabName.length) {
+            $parent.find('.tab-content').find('.tab-pane').removeClass('active').end()
+            .find('.' + tabName).addClass('active');
+        } else {
+            $parent.find('.tab-content').find('.tab-pane').addClass('active');
+        }
+        
     }
 });
 

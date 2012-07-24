@@ -40,7 +40,7 @@
     		<div class="span3">
     			<div class="well sidebar-nav">
     				<ul class="nav nav-list">
-	    				<li class="nav-header">Side Nav</li>
+	    				<li class="nav-header">Menu &amp; Album</li>
 	    				<li><a href="<?php echo site_url('management/index/managemenu'); ?>">Menu Management</a></li>
                         <li><a href="<?php echo site_url('management/index/managealbum'); ?>">Menu Album</a></li>
                         <li class="nav-header">Photo</li>
