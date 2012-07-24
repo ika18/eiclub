@@ -115,6 +115,10 @@ var AddAlbumView = Backbone.View.extend({
     initialize: function () {
         this.$select = $('#menu_name');
         this.$input = $('#album_name');
+
+        this.$tabbable = $('.tabbable');
+        this.$tab = this.$tabbable.find('.nav-tabs li');
+        this.$tr = this.$tabbable.find('#album-content tbody tr');
     },
 
     formSubmit: function (e) {
@@ -152,6 +156,10 @@ var AddAlbumView = Backbone.View.extend({
                         that.$input.parents('.control-group').attr('class', 'control-group')
                         .end().val('');
                         that.$input.next().text('');
+
+                        var tab = that.$tab.find('.active a').attr('href').substing(1);
+                        console.log(that.$tr.find(''));
+
                         clearTimeout(time);
                     }, 1000);
                 } else {
@@ -160,7 +168,6 @@ var AddAlbumView = Backbone.View.extend({
             },
             error: function (model, response) {
                 errorMsg();
-                // console.log('error');
             }
         });
     },
@@ -186,8 +193,7 @@ var AppView = Backbone.View.extend({
 
         Albums.fetch({
             success: function (collection, resposne) {
-                // window.collection = collection;
-                // console.log(collection);
+                console.log(resposne);
             },
             error: function () {
                 errorMsg();

@@ -8,10 +8,14 @@ Class Albumapi extends REST_Controller {
     {
         $id = $this->get('id');
         $this->load->model('Albummodel', 'menu');
-        
+
         if (empty($id)) {
             $data = $this->menu->get_all();  
-            $this->response($data); 
+            if (empty($data)) {
+                header('HTTP/1.1 204 No Content');
+            } else {
+                $this->response($data);
+            }
         } else {
             $data = $this->menu->get_where($id);
             $this->response($data);

@@ -15,7 +15,7 @@ class Albummodel extends CI_Model {
         if (!empty($data)) {
             return $data;
         } else {
-            return array('msg'=>'no data');
+            return '';
         }
     }
 
