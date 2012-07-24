@@ -37,17 +37,17 @@ class Albummodel extends CI_Model {
         return $this->db->insert_id();
     }
 
-    function delete($menu_id) 
+    function delete($album_id) 
     {
-        $this->db->delete('album', array('menu_id' => $menu_id));
+        $this->db->delete('album', array('album_id' => $album_id));
     }
 
     function update($model)
     {
-        $this->db->where('menu_id', $model['menu_id']);
+        $this->db->where('album_id', $model['album_id']);
         $this->db->update('album', array(
-            'menu_name' => $model['menu_name'],
-            'menu_seq' => $model['menu_seq'],
+            'album_name' => $model['album_name'],
+            'menu_id' => $model['menu_id'],
         ));
     }
 }

@@ -25,7 +25,18 @@ var Album = Backbone.Model.extend({
         'album_name': '',
         'menu_id': ''
     },
-    url: '/api/albumapi/album/format/json/id'
+    clear: function (callback) {
+        this.destroy({
+            success: function (model, response) {
+                if (response.status === 'ok' && callback) {
+                    callback();
+                }
+            },
+            error: function () {
+                errorMsg();
+            }
+        });
+    }
 });
 
 var AlbumCollection = Backbone.Collection.extend({
@@ -288,6 +299,7 @@ var AppView = Backbone.View.extend({
     addAlbum: function (album) {
         var albumContentView = new AlbumContentView({model: album});
         this.$content.append(albumContentView.render().el);
+        album.id = album.get('album_id');
     },
     addAlbums: function () {
         Albums.each(this.addAlbum);
