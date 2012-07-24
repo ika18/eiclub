@@ -60,6 +60,15 @@ var AlbumContentView = Backbone.View.extend({
         'class': 'tab-pane'
     },
     template: $('#album-template').html(),
+
+    events: {
+        'click .editBtn': 'edit',
+        'click .closeBtn': 'close',
+        'click .updateBten': 'save',
+        'click .removeBtn': 'remove',
+        'focus input:text': 'focusInput'
+    },
+
     initialize: function () {
 
     },
@@ -74,7 +83,65 @@ var AlbumContentView = Backbone.View.extend({
         else if (this.model.get('menu_id') == tab) {
             this.$el.addClass('active');
         }
+
+        this.$input = this.$('input:text');
+        this.$control = this.$('.control-group');
+        this.$helper = this.$('.help-inline');
+
+        this.$view = this.$el.find('td:eq(1) .view');
         return this;
+    },
+    edit: function (e) {
+        e.preventDefault();
+        this.$el.addClass('editMode');
+        var val = this.$view.text();
+        // console.log(this.$el.find('td:eq(1) .view'));
+        this.$input.attr('placeholder', val).focus();
+    },
+    close: function (e) {
+        e.preventDefault();
+        $(e.target).parents('tr').removeClass('editMode').find("td:eq(1) input").val('');
+        return false;
+    },
+    save: function (e) {
+        e.preventDefault();
+        var that = this;
+        var menu_name = $.trim(this.$input.val());
+        var menu_id = this.$el.find('input[name="menu_id"]').val();
+
+        if (menu_name.length) {
+            this.model.save({
+                'menu_name': menu_name,
+                'menu_id': menu_id
+            }, {
+                success: function (model, response) {
+                    if (response.status === 'ok') {
+                        that.$el.removeClass('editMode');
+                        that.$view.text(model.get('menu_name'));
+                    }
+                },
+                error: function () {
+                    errorMsg();
+                }
+            });
+        } else {
+            this.$control.attr('class', 'control-group error');
+            this.$helper.text('This field can\'t be empty!');
+        }
+    },
+    remove: function (e) {
+        e.preventDefault();
+        var that = this;
+        var confirm = window.confirm("Are you sure to delete this menu?");
+        if (confirm) {
+            this.model.clear(function () {
+                that.$el.remove();
+            });
+        }
+    },
+    focusInput: function (e) {
+        this.$input.parents('.control-group').removeClass('error');
+        this.$helper.text('');
     }
 });
 

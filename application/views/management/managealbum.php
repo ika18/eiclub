@@ -63,7 +63,18 @@
 
 <script type="text/template" id="album-template">
 	<td></td>
-	<td>{{album_name}}</td>
+	<td>
+		<div class="view">{{album_name}}</div>
+		<div class="edit form-inline">
+			<div class="control-group">
+				<div class="controls">
+					<input type="text" name="album_name" />
+					<input type="hidden" name="album_id" value="{{album_id}}">
+					<span class="help-inline"></span>
+				</div>
+			</div>
+		</div>
+	</td>
 	<td>
 		<div class="view">
 			<a href="#" class="btn btn-primary editBtn">Edit</a>
