@@ -117,18 +117,16 @@ var AlbumContentView = Backbone.View.extend({
     save: function (e) {
         e.preventDefault();
         var that = this;
-        var menu_name = $.trim(this.$input.val());
-        var menu_id = this.$el.find('input[name="menu_id"]').val();
+        var album_name = $.trim(this.$input.val());
 
         if (menu_name.length) {
             this.model.save({
-                'menu_name': menu_name,
-                'menu_id': menu_id
+                'album_name': album_name
             }, {
                 success: function (model, response) {
                     if (response.status === 'ok') {
                         that.$el.removeClass('editMode');
-                        that.$view.text(model.get('menu_name'));
+                        that.$view.text(model.get('album_name'));
                     }
                 },
                 error: function () {
@@ -222,12 +220,6 @@ var AddAlbumView = Backbone.View.extend({
                         .end().val('');
                         that.$input.next().text('');
 
-                        // var tab = $('.tabbable .nav-tabs li.active a').attr('href').substring(4);
-                        
-                        // // if (model.get('menu_id') == tab) {
-
-                        // // }
-
                         Albums.add(response);
 
                         clearTimeout(time);
@@ -300,6 +292,7 @@ var AppView = Backbone.View.extend({
         var albumContentView = new AlbumContentView({model: album});
         this.$content.append(albumContentView.render().el);
         album.id = album.get('album_id');
+        console.log(album);
     },
     addAlbums: function () {
         Albums.each(this.addAlbum);

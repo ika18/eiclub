@@ -69,7 +69,6 @@
 			<div class="control-group">
 				<div class="controls">
 					<input type="text" name="album_name" />
-					<input type="hidden" name="album_id" value="{{album_id}}">
 					<span class="help-inline"></span>
 				</div>
 			</div>
