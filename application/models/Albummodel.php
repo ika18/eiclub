@@ -12,8 +12,11 @@ class Albummodel extends CI_Model {
     {
         $query = $this->db->get('album');
         $data = $query->result();
-
-        return $data;
+        if (!empty($data)) {
+            return $data;
+        } else {
+            return array('msg'=>'no data');
+        }
     }
 
     function get_where($id)
