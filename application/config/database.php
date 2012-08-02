@@ -48,7 +48,7 @@
 $active_group = 'homemac';
 $active_record = TRUE;
 
-$db['homemac']['hostname'] = 'localhost';
+$db['homemac']['hostname'] = 'www.localphp.com';
 $db['homemac']['username'] = 'root';
 $db['homemac']['password'] = '200367';
 $db['homemac']['database'] = 'eiclub';
