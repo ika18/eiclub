@@ -8,8 +8,7 @@
 	<?php echo link_tag('assets/css/bootstrap-responsive.css');?>
 	<?php echo link_tag('assets/css/management.css');?>
 
-    <script src="<?php echo base_url('assets/js/libs/jquery/jquery-1.7.1.min.js'); ?>"></script>
-
+    <script src="<?php echo site_url('assets/js/libs/jquery/jquery-1.7.1.min.js'); ?>"></script>
   
 	<title>EI Club - Management</title>
 </head>

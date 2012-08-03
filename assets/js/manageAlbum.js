@@ -14,7 +14,7 @@ var Menu = Backbone.Model.extend({
 
 var MenuCollection = Backbone.Collection.extend({
     model: Menu,
-    url: '/index.php/api/menuapi/menu/format/json/id'
+    url: '/api/menuapi/menu/format/json/id'
 });
 
 var Menus = new MenuCollection;
@@ -41,7 +41,7 @@ var Album = Backbone.Model.extend({
 
 var AlbumCollection = Backbone.Collection.extend({
     model: Album,
-    url: '/index.php/api/albumapi/album/format/json/id'
+    url: '/api/albumapi/album/format/json/id'
 });
 
 var Albums = new AlbumCollection;

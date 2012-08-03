@@ -60,7 +60,7 @@
 	</td>
 </script>
 
-<script src="<?php echo base_url('assets/js/libs/mustache/mustache.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/libs/underscore/underscore-min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/libs/backbone/backbone-min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/manageMenu.js'); ?>"></script>
+<script src="<?php echo site_url('assets/js/libs/mustache/mustache.js'); ?>"></script>
+<script src="<?php echo site_url('assets/js/libs/underscore/underscore-min.js'); ?>"></script>
+<script src="<?php echo site_url('assets/js/libs/backbone/backbone-min.js'); ?>"></script>
+<script src="<?php echo site_url('assets/js/manageMenu.js'); ?>"></script>
