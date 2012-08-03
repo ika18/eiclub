@@ -4,9 +4,6 @@ var errorMsg = function () {
 	alert('An error occured, please try later! Or connect with Ika Wu please!');
 };
 
-var menuUrl = '/index.php/api/menuapi/menu/format/json/id';
-var albumUrl = '/index.php/api/albumapi/album/format/json/id';
-
 var Menu = Backbone.Model.extend({
     defaults: {
         'menu_id': '',
@@ -17,7 +14,7 @@ var Menu = Backbone.Model.extend({
 
 var MenuCollection = Backbone.Collection.extend({
     model: Menu,
-    url: menuUrl
+    url: '/index.php/api/menuapi/menu/format/json/id'
 });
 
 var Menus = new MenuCollection;
@@ -40,11 +37,12 @@ var Album = Backbone.Model.extend({
             }
         });
     },
+    url: '/index.php/api/albumapi/album/format/json'
 });
 
 var AlbumCollection = Backbone.Collection.extend({
     model: Album,
-    url: albumUrl
+    url: '/index.php/api/albumapi/album/format/json/id'
 });
 
 var Albums = new AlbumCollection;
@@ -78,7 +76,7 @@ var AlbumContentView = Backbone.View.extend({
     events: {
         'click .editBtn': 'edit',
         'click .closeBtn': 'close',
-        'click .updateBtn': 'save',
+        'click .updateBten': 'save',
         'click .removeBtn': 'remove',
         'focus input:text': 'focusInput'
     },
@@ -208,7 +206,6 @@ var AddAlbumView = Backbone.View.extend({
         }
 
         var album = new Album();
-        album.url = albumUrl;
         album.save({
             'album_name': album_name,
             'menu_id': menu_id
