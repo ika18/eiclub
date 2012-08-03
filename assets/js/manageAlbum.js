@@ -4,6 +4,9 @@ var errorMsg = function () {
 	alert('An error occured, please try later! Or connect with Ika Wu please!');
 };
 
+var menuUrl = '/index.php/api/menuapi/menu/format/json/id';
+var albumUrl = '/index.php/api/albumapi/album/format/json/id';
+
 var Menu = Backbone.Model.extend({
     defaults: {
         'menu_id': '',
@@ -14,7 +17,7 @@ var Menu = Backbone.Model.extend({
 
 var MenuCollection = Backbone.Collection.extend({
     model: Menu,
-    url: '/api/menuapi/menu/format/json/id'
+    url: menuUrl
 });
 
 var Menus = new MenuCollection;
@@ -36,12 +39,12 @@ var Album = Backbone.Model.extend({
                 errorMsg();
             }
         });
-    }
+    },
 });
 
 var AlbumCollection = Backbone.Collection.extend({
     model: Album,
-    url: '/api/albumapi/album/format/json/id'
+    url: albumUrl
 });
 
 var Albums = new AlbumCollection;
@@ -75,7 +78,7 @@ var AlbumContentView = Backbone.View.extend({
     events: {
         'click .editBtn': 'edit',
         'click .closeBtn': 'close',
-        'click .updateBten': 'save',
+        'click .updateBtn': 'save',
         'click .removeBtn': 'remove',
         'focus input:text': 'focusInput'
     },
@@ -205,6 +208,7 @@ var AddAlbumView = Backbone.View.extend({
         }
 
         var album = new Album();
+        album.url = albumUrl;
         album.save({
             'album_name': album_name,
             'menu_id': menu_id
@@ -292,7 +296,7 @@ var AppView = Backbone.View.extend({
         var albumContentView = new AlbumContentView({model: album});
         this.$content.append(albumContentView.render().el);
         album.id = album.get('album_id');
-        console.log(album);
+        // console.log(album);
     },
     addAlbums: function () {
         Albums.each(this.addAlbum);

@@ -98,7 +98,7 @@
 </script>
 <!-- thumbnail template end -->
 
-<script src="<?php echo site_url('assets/js/bootstrap/bootstrap-transition.js'); ?>"></script>
-<script src="<?php echo site_url('assets/js/bootstrap/bootstrap-modal.js'); ?>"></script>
-<script src="<?php echo site_url('assets/js/dndUpload.js'); ?>"></script>
-<script src="<?php echo site_url('assets/js/photoUpload.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap/bootstrap-transition.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap/bootstrap-modal.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dndUpload.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/photoUpload.js'); ?>"></script>
