@@ -36,7 +36,8 @@ var Album = Backbone.Model.extend({
                 errorMsg();
             }
         });
-    }
+    },
+    url: '/index.php/api/albumapi/album/format/json'
 });
 
 var AlbumCollection = Backbone.Collection.extend({
@@ -292,7 +293,7 @@ var AppView = Backbone.View.extend({
         var albumContentView = new AlbumContentView({model: album});
         this.$content.append(albumContentView.render().el);
         album.id = album.get('album_id');
-        console.log(album);
+        // console.log(album);
     },
     addAlbums: function () {
         Albums.each(this.addAlbum);
