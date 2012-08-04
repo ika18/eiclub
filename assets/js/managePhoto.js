@@ -60,7 +60,8 @@ var AppView = Backbone.View.extend({
 	el: $('body'),
 
 	events: {
-		'change #menu-list': 'changeMenu'
+		'change #menu-list': 'changeMenu',
+		'change #album-list': 'changeAlbum'
 	},
 
 	initialize: function () {
@@ -120,6 +121,10 @@ var AppView = Backbone.View.extend({
 	cleanAlbumSelect: function () {
 		this.$albumSelect.children(':not([value=""])').hide();
 		this.$albumSelect.children('[value=""]').prop('selected', true);
+	},
+
+	changeAlbum: function () {
+		// TODO: change album then sort photo.
 	}
 });
 
