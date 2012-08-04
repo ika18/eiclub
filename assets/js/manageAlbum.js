@@ -4,8 +4,8 @@ var errorMsg = function () {
 	alert('An error occured, please try later! Or connect with Ika Wu please!');
 };
 
-var menuUrl = '/index.php/api/menuapi/menu/format/json/id';
-var albumUrl = '/index.php/api/albumapi/album/format/json/id';
+var menuUrl = '/api/menuapi/menu/format/json/id';
+var albumUrl = '/api/albumapi/album/format/json/id';
 
 var Menu = Backbone.Model.extend({
     defaults: {
