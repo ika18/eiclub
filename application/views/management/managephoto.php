@@ -4,17 +4,13 @@
 </div>
 
 <div class="row-fluid">
-    <p>
-        <select id="menuList" class="span2">
+    <p id="menu-album-list">
+        <select id="menu-list" class="span2">
             <option value="">All</option>
-            <option value="1">Album 1</option>
-            <option value="2">Album 2</option>
         </select>
 
-        <select class="span2" id="albumList">
+        <select  id="album-list" class="span2">
             <option value="">All</option>
-            <option value="1">Album 1</option>
-            <option value="2">Album 2</option>
         </select>
     </p>
 
@@ -98,7 +94,23 @@
 </script>
 <!-- thumbnail template end -->
 
+<!-- thumbnail template start -->
+<script type="text/template" id="select-option-template">
+    {{#album_id}}
+    <option value="{{album_id}}" data-parent="{{menu_id}}">{{album_name}}</option>
+    {{/album_id}}
+
+    {{#menu_seq}}
+    <option value="{{menu_id}}">{{menu_name}}</option>
+    {{/menu_seq}}
+</script>
+<!-- thumbnail template end -->
+
+<script src="<?php echo base_url('assets/js/libs/mustache/mustache.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/libs/underscore/underscore-min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/libs/backbone/backbone-min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap/bootstrap-transition.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap/bootstrap-modal.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/dndUpload.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/photoUpload.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/managephoto.js'); ?>"></script>
