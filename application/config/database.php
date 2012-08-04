@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'homemac';
+$active_group = 'laptop';
 $active_record = TRUE;
 
 $db['homemac']['hostname'] = 'www.localphp.com';
@@ -95,6 +95,22 @@ $db['yuerfly']['dbcollat'] = 'utf8_general_ci';
 $db['yuerfly']['swap_pre'] = '';
 $db['yuerfly']['autoinit'] = TRUE;
 $db['yuerfly']['stricton'] = FALSE;
+
+$db['laptop']['hostname'] = 'localhost';
+$db['laptop']['username'] = 'root';
+$db['laptop']['password'] = 'root';
+$db['laptop']['database'] = 'eiclub';
+$db['laptop']['dbdriver'] = 'mysql';
+$db['laptop']['dbprefix'] = '';
+$db['laptop']['pconnect'] = TRUE;
+$db['laptop']['db_debug'] = TRUE;
+$db['laptop']['cache_on'] = FALSE;
+$db['laptop']['cachedir'] = '';
+$db['laptop']['char_set'] = 'utf8';
+$db['laptop']['dbcollat'] = 'utf8_general_ci';
+$db['laptop']['swap_pre'] = '';
+$db['laptop']['autoinit'] = TRUE;
+$db['laptop']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

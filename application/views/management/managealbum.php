@@ -80,7 +80,7 @@
 			<a href="#" class="btn btn-danger removeBtn">Remove</a>
 		</div>
 		<div class="edit">
-			<a href="#" class="btn btn-primary updateBten">Update</a>
+			<a href="#" class="btn btn-primary updateBtn">Update</a>
 			<a href="#" class="btn closeBtn">Abandon</a>
 		</div>
 	</td>

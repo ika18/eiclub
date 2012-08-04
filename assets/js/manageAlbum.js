@@ -122,7 +122,7 @@ var AlbumContentView = Backbone.View.extend({
         var that = this;
         var album_name = $.trim(this.$input.val());
 
-        if (menu_name.length) {
+        if (album_name.length) {
             this.model.save({
                 'album_name': album_name
             }, {
